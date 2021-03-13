@@ -1,2 +1,2 @@
 # proiect-mds
-Gamefied Habit Tracker App
+Gamified Habit Tracker App
