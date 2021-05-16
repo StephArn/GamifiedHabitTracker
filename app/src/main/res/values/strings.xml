@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Popup</string>
+    <string name="offline_massage">You are offline</string>
+</resources>
