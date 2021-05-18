@@ -2,15 +2,14 @@ package com.example.circlemenu;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import java.util.Random;
-import com.example.circlemenu.R;
 import com.google.android.material.snackbar.Snackbar;
 import com.ramotion.circlemenu.CircleMenuView;
-
-import java.util.Random;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -18,22 +17,38 @@ public class MainActivity extends AppCompatActivity
     Random random = new Random();
     int select = random.nextInt(message.length);
 
+    View screenView;
+    Button clickMe;
+    int[] color;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Culoare fundal
+        color = new int[] {Color.BLACK, Color.BLUE, Color.GRAY, Color.GREEN, Color.YELLOW, Color.CYAN};
+        screenView =  findViewById(R.id.rView);
+        clickMe = findViewById(R.id.button);
+
+        clickMe.setOnClickListener(view -> {
+            int aryLength = color.length;
+
+            Random random = new Random();
+            int rNum = random.nextInt(aryLength);
+
+            screenView.setBackgroundColor(color[rNum]);
+        });
+
+        // Mesajele de incurajare
         View parentLayout = findViewById(android.R.id.content);
         Snackbar.make(parentLayout, message[select], Snackbar.LENGTH_LONG)
-                .setAction("CLOSE", new View.OnClickListener()
-                {
-                    @Override
-                    public void onClick(View view) {}
-                })
+                .setAction("CLOSE", view -> {})
                 .setActionTextColor(getResources().getColor(android.R.color.holo_red_light ))
                 .show();
 
+        // Meniu rotita
         final CircleMenuView menu = findViewById(R.id.circle_menu);
         menu.setEventListener(new CircleMenuView.EventListener(){
             @Override
