@@ -1,9 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="100dp"
     tools:context=".HomeActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/bttnprog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add new habit"
+        android:padding="10dp"
+        android:layout_marginTop="100dp"
+        />
+
+    <Button
+        android:id="@+id/bttntemp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Choose a habit template"
+        android:layout_marginTop="100dp"
+        android:layout_below="@+id/bttnprog"/>
+
+</RelativeLayout>
