@@ -19,14 +19,18 @@ public class DBHelper extends SQLiteOpenHelper  {
     @Override
     public void onCreate(SQLiteDatabase MyDB) {
         MyDB.execSQL("create Table users(username TEXT primary key, password TEXT)");
+        //MyDB.execSQL("create Table habits(habit_id INTEGER primary key, name TEXT NOT NULL," +
+          //      " description TEXT, habit_count INTEGER NOT NULL DEFAULT 0)");
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase MyDB, int oldVersion, int newVersion) {
         MyDB.execSQL("drop Table if exists users");
+        //MyDB.execSQL("drop Table if exists habits");
     }
 
-    public Boolean insertData(String username, String password){
+    public Boolean insertUser(String username, String password){
         SQLiteDatabase MyDB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("username", username);
