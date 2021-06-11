@@ -33,28 +33,25 @@ public class calend extends AppCompatActivity {
 
             }
         });
-        try {
+       try {
             dbHandler = new mySQLiteDBHandler(this, "Calendar database",null,1);
             sqLiteDatabase = dbHandler.getWritableDatabase();
-            sqLiteDatabase.execSQL("Create Table EventCalendar(Date TEXT,Event TEXT)");
+            sqLiteDatabase.execSQL("Create Table IF NOT EXISTS EventCalendar(Date TEXT,Event TEXT)");
             ContentValues contentValues= new ContentValues();
-            for(int i=1971;i<=2050;i++)
+            for(int i=2000;i<=2050;i++)
             {
-                contentValues.put("Date",i+"1225");
+                contentValues.put("Date",i+"1125");
                 contentValues.put("Event","Christmas");
                 sqLiteDatabase.insert("EventCalendar",null,contentValues);
-            }
-            for(int i=1971;i<=2050;i++)
-            {
-                contentValues.put("Date",i+"38");
+                contentValues.clear();
+                contentValues.put("Date",i+"28");
                 contentValues.put("Event","Mother's Day");
                 sqLiteDatabase.insert("EventCalendar",null,contentValues);
-            }
-            for(int i=1971;i<=2050;i++)
-            {
-                contentValues.put("Date",i+"31");
+                contentValues.clear();
+                contentValues.put("Date",i+"21");
                 contentValues.put("Event","Martisor");
                 sqLiteDatabase.insert("EventCalendar",null,contentValues);
+                contentValues.clear();
             }
 
         }
@@ -68,14 +65,15 @@ public class calend extends AppCompatActivity {
       contentValues.put("Date",selectedDate);
       contentValues.put("Event",editText.getText().toString());
       sqLiteDatabase.insert("EventCalendar",null,contentValues);
+      contentValues.clear();
     }
 
     public void ReadDatabase(View view){
-        String query = "Select Event from EventCalendar where Date ="+selectedDate;
+        String query = "Select Event from EventCalendar where Date ="+selectedDate+";";
         try{
-            Cursor cursor=sqLiteDatabase.rawQuery(query,null);
+            @SuppressLint("Recycle") Cursor cursor=sqLiteDatabase.rawQuery(query,null);
             cursor.moveToFirst();
-            editText.setText(cursor.getString(1));
+            editText.setText(cursor.getString(0));
         }
         catch (Exception e){
             e.printStackTrace();
