@@ -15,13 +15,13 @@ import com.ramotion.circlemenu.CircleMenuView;
 
 public class MainActivity extends AppCompatActivity
 {
-    String[] message = {"You can do this!", "It's o good day to make changes!", "Don't give up on your goals!", "It's never to late be become a better person!"};
+    String[] message = {"You can do this!", "It's a good day to make changes!", "Don't give up on your goals!", "It's never to late be become a better person!"};
     Random random = new Random();
     int select = random.nextInt(message.length);
-    public Button button1;
+//    public Button button1;
 
     View screenView;
-    Button clickMe;
+//    Button clickMe;
     int[] color;
 
     @Override
