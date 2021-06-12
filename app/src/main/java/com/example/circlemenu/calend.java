@@ -1,8 +1,8 @@
-package com.mds;
+package com.example.circlemenu;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -11,29 +11,35 @@ import android.view.View;
 import android.widget.CalendarView;
 import android.widget.EditText;
 
-public class calend extends AppCompatActivity {
+public class calend extends AppCompatActivity
+{
     private CalendarView calendarView;
     private mySQLiteDBHandler dbHandler;
     private EditText editText;
     private String selectedDate;
     private SQLiteDatabase sqLiteDatabase;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calendlayout);
 
         calendarView=(CalendarView) findViewById(R.id.calendarView);
         editText=findViewById(R.id.editText);
 
-        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener()
+        {
             @Override
-            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth)
+            {
                 selectedDate = Integer.toString(year)+Integer.toString(month)+Integer.toString(dayOfMonth);
                 ReadDatabase(view);
 
             }
         });
-       try {
+        try
+        {
             dbHandler = new mySQLiteDBHandler(this, "Calendar database",null,1);
             sqLiteDatabase = dbHandler.getWritableDatabase();
             sqLiteDatabase.execSQL("Create Table IF NOT EXISTS EventCalendar(Date TEXT,Event TEXT)");
@@ -53,29 +59,34 @@ public class calend extends AppCompatActivity {
                 sqLiteDatabase.insert("EventCalendar",null,contentValues);
                 contentValues.clear();
             }
-
         }
-        catch (Exception e){
+        catch (Exception e)
+        {
             e.printStackTrace();
         }
 
     }
-    public void InsertDatabase(View view){
-      ContentValues contentValues= new ContentValues();
-      contentValues.put("Date",selectedDate);
-      contentValues.put("Event",editText.getText().toString());
-      sqLiteDatabase.insert("EventCalendar",null,contentValues);
-      contentValues.clear();
+
+    public void InsertDatabase(View view)
+    {
+        ContentValues contentValues= new ContentValues();
+        contentValues.put("Date",selectedDate);
+        contentValues.put("Event",editText.getText().toString());
+        sqLiteDatabase.insert("EventCalendar",null,contentValues);
+        contentValues.clear();
     }
 
-    public void ReadDatabase(View view){
+    public void ReadDatabase(View view)
+    {
         String query = "Select Event from EventCalendar where Date ="+selectedDate+";";
-        try{
+        try
+        {
             @SuppressLint("Recycle") Cursor cursor=sqLiteDatabase.rawQuery(query,null);
             cursor.moveToFirst();
             editText.setText(cursor.getString(0));
         }
-        catch (Exception e){
+        catch (Exception e)
+        {
             e.printStackTrace();
             editText.setText("");
         }

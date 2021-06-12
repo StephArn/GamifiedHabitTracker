@@ -2,6 +2,8 @@ package com.example.circlemenu;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +18,7 @@ public class MainActivity extends AppCompatActivity
     String[] message = {"You can do this!", "It's o good day to make changes!", "Don't give up on your goals!", "It's never to late be become a better person!"};
     Random random = new Random();
     int select = random.nextInt(message.length);
+    public Button button1;
 
     View screenView;
     Button clickMe;
@@ -30,16 +33,18 @@ public class MainActivity extends AppCompatActivity
         // Culoare fundal
         color = new int[] {Color.BLACK, Color.BLUE, Color.GRAY, Color.GREEN, Color.YELLOW, Color.CYAN};
         screenView =  findViewById(R.id.rView);
-        clickMe = findViewById(R.id.button);
 
-        clickMe.setOnClickListener(view -> {
-            int aryLength = color.length;
-
-            Random random = new Random();
-            int rNum = random.nextInt(aryLength);
-
-            screenView.setBackgroundColor(color[rNum]);
-        });
+//        clickMe = findViewById(R.id.button);
+//
+//        clickMe.setOnClickListener(view ->
+//        {
+//            int aryLength = color.length;
+//
+//            Random random = new Random();
+//            int rNum = random.nextInt(aryLength);
+//
+//            screenView.setBackgroundColor(color[rNum]);
+//        });
 
         // Mesajele de incurajare
         View parentLayout = findViewById(android.R.id.content);
@@ -50,7 +55,8 @@ public class MainActivity extends AppCompatActivity
 
         // Meniu rotita
         final CircleMenuView menu = findViewById(R.id.circle_menu);
-        menu.setEventListener(new CircleMenuView.EventListener(){
+        menu.setEventListener(new CircleMenuView.EventListener()
+        {
             @Override
             public void onMenuOpenAnimationStart(@NonNull CircleMenuView view)
             {
@@ -80,6 +86,21 @@ public class MainActivity extends AppCompatActivity
             public void onButtonClickAnimationEnd(@NonNull CircleMenuView view, int index)
             {
                 Log.d("D","onButtonClickAnimationEnd|index: "+index);
+
+                if (index == 0)
+                {
+                    openCalend();
+                }
+
+                if (index == 3)
+                {
+                    int aryLength = color.length;
+
+                    Random random = new Random();
+                    int rNum = random.nextInt(aryLength);
+
+                    screenView.setBackgroundColor(color[rNum]);
+                }
             }
             @Override
             public boolean onButtonLongClick(@NonNull CircleMenuView view, int buttonIndex)
@@ -97,7 +118,12 @@ public class MainActivity extends AppCompatActivity
             {
                 Log.d("D","onButtonLongClickAnimationEnd|index: "+buttonIndex);
             }
-
         });
+    }
+
+    public void openCalend()
+    {
+        Intent intent = new Intent(this, calend.class);
+        startActivity(intent);
     }
 }

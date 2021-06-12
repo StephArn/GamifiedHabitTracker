@@ -1,4 +1,4 @@
-package com.mds;
+package com.example.circlemenu;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
