@@ -11,7 +11,9 @@
         android:theme="@style/Theme.LoginSqlite">
         <activity android:name=".HomeActivity"></activity>
         <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".ModifyUsernameActivity" />
+        <activity android:name=".ModifyPasswordActivity" />
+        <activity android:name=".SignUpActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

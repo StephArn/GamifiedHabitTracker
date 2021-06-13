@@ -8,20 +8,20 @@
     tools:context=".HomeActivity">
 
     <Button
-        android:id="@+id/bttnprog"
+        android:id="@+id/bttnmodifusername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add new habit"
+        android:text="Update Your Username"
         android:padding="10dp"
         android:layout_marginTop="100dp"
         />
 
     <Button
-        android:id="@+id/bttntemp"
+        android:id="@+id/bttnmodifpass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Choose a habit template"
+        android:text="Update Your Password"
         android:layout_marginTop="100dp"
-        android:layout_below="@+id/bttnprog"/>
+        android:layout_below="@+id/bttnmodifusername"/>
 
 </RelativeLayout>
