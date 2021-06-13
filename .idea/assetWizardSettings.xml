@@ -305,7 +305,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material/icons/materialicons/book_online/baseline_book_online_24.xml" />
+                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material/icons/materialicons/insert_emoticon/baseline_insert_emoticon_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -315,7 +315,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_baseline_book_online_24" />
+                            <entry key="outputName" value="ic_baseline_insert_emoticon_24" />
                             <entry key="sourceFile" value="C:\Users\mihai\Desktop\Serios\Projects\Android\GamifiedHabitTracker-main" />
                           </map>
                         </option>

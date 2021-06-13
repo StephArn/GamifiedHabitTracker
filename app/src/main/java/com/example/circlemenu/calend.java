@@ -78,7 +78,6 @@ public class calend extends AppCompatActivity
 
     public void ReadDatabase(View view)
     {
-        System.out.println("\nCitim baza de date\n");
         String query = "Select Event from EventCalendar where Date ="+selectedDate+";";
         try
         {

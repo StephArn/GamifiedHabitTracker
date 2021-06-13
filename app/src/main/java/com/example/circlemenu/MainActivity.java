@@ -2,26 +2,31 @@ package com.example.circlemenu;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.AlarmManager;
+import android.app.AlertDialog;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import java.util.Calendar;
 import java.util.Random;
 import com.google.android.material.snackbar.Snackbar;
 import com.ramotion.circlemenu.CircleMenuView;
 
 public class MainActivity extends AppCompatActivity
 {
-    String[] message = {"You can do this!", "It's a good day to make changes!", "Don't give up on your goals!", "It's never to late be become a better person!"};
+    String[] message = {"Hi! I'm Marcel, your assistant in becoming a better person!", "Hello there! My name is Marcel and I am here to make sure you don't give up!", "Hello! I am Marcel, your virtual friend! Let's get this started!"};
     Random random = new Random();
     int select = random.nextInt(message.length);
-//    public Button button1;
+    // You can do this!", "It's a good day to make changes!", "Don't give up on your goals!", "It's never to late be become a better person!
 
     View screenView;
-//    Button clickMe;
     int[] color;
 
     @Override
@@ -33,18 +38,6 @@ public class MainActivity extends AppCompatActivity
         // Culoare fundal
         color = new int[] {Color.BLACK, Color.BLUE, Color.GRAY, Color.GREEN, Color.YELLOW, Color.CYAN};
         screenView =  findViewById(R.id.rView);
-
-//        clickMe = findViewById(R.id.button);
-//
-//        clickMe.setOnClickListener(view ->
-//        {
-//            int aryLength = color.length;
-//
-//            Random random = new Random();
-//            int rNum = random.nextInt(aryLength);
-//
-//            screenView.setBackgroundColor(color[rNum]);
-//        });
 
         // Mesajele de incurajare
         View parentLayout = findViewById(android.R.id.content);
@@ -92,6 +85,11 @@ public class MainActivity extends AppCompatActivity
                     openCalend();
                 }
 
+                if (index == 1)
+                {
+                    niceMessage();
+                }
+
                 if (index == 3)
                 {
                     int aryLength = color.length;
@@ -124,6 +122,26 @@ public class MainActivity extends AppCompatActivity
                 Log.d("D","onButtonLongClickAnimationEnd|index: "+buttonIndex);
             }
         });
+    }
+
+    public void niceMessage()
+    {
+        String[] message1 = {"You can do this!", "It's a good day to make changes!", "Don't give up on your goals!", "It's never to late be become a better person!"};
+        Random random1 = new Random();
+        int select1 = random1.nextInt(message1.length);
+
+        AlertDialog.Builder myAlert = new AlertDialog.Builder(this);
+        myAlert.setMessage(message1[select1])
+                .setPositiveButton("Continue", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                        dialog.dismiss();
+                    }
+                })
+                .create();
+        myAlert.show();
     }
 
     public void openCalend()
