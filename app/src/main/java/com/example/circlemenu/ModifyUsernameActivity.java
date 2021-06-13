@@ -21,7 +21,7 @@ public class ModifyUsernameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_modifuser);
         newUsername = (EditText) findViewById(R.id.newusername);
         bttnmodif = (Button) findViewById(R.id.bttnmodifusername);
-        db = new DBHelper(this);
+        db = DBHelper.getInstance(this);
 
         bttnmodif.setOnClickListener(new View.OnClickListener() {
             @Override

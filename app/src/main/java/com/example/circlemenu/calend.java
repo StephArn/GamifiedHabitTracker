@@ -4,10 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
 
@@ -16,12 +18,26 @@ public class calend extends AppCompatActivity
     private CalendarView calendarView;
     private mySQLiteDBHandler dbHandler;
     private EditText editText;
-    private String selectedDate;
+    String selectedDate;
     private SQLiteDatabase sqLiteDatabase;
+    Button back;
+    public static final String EXTRA_DATE = "com.example.circlemenu.EXTRA_DATE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+//        back = (Button) findViewById(R.id.back);
+//        back.setOnClickListener(new View.OnClickListener()
+//        {
+//            @Override
+//            public void onClick(View v)
+//            {
+//                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+//                intent.putExtra(EXTRA_DATE, selectedDate);
+//                startActivity(intent);
+//            }
+//        });
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calendlayout);
 
@@ -90,5 +106,12 @@ public class calend extends AppCompatActivity
             e.printStackTrace();
             editText.setText("");
         }
+    }
+
+    public void openMenu()
+    {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra(EXTRA_DATE, selectedDate);
+        startActivity(intent);
     }
 }

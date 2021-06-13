@@ -14,6 +14,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
 import java.util.Calendar;
 import java.util.Random;
 import com.google.android.material.snackbar.Snackbar;
@@ -21,11 +23,11 @@ import com.ramotion.circlemenu.CircleMenuView;
 
 public class MainActivity extends AppCompatActivity
 {
-    String[] message = {"Hi! I'm Marcel, your assistant in becoming a better person!", "Hello there! My name is Marcel and I am here to make sure you don't give up!", "Hello! I am Marcel, your virtual friend! Let's get this started!"};
+    String[] message = {"Hi! I'm Marcel, your assistant in becoming a better person!",
+            "Hello there! My name is Marcel and I am here to make sure you don't give up!",
+            "Hello! I am Marcel, your virtual friend! Let's get this started!"};
     Random random = new Random();
     int select = random.nextInt(message.length);
-    // You can do this!", "It's a good day to make changes!", "Don't give up on your goals!", "It's never to late be become a better person!
-
     View screenView;
     int[] color;
 
@@ -34,6 +36,12 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Atentionare
+        Intent intent = getIntent();
+        String text = intent.getStringExtra(calend.EXTRA_DATE);
+        TextView textView1 = (TextView) findViewById(R.id.textview1);
+        textView1.setText(text);
 
         // Culoare fundal
         color = new int[] {Color.BLACK, Color.BLUE, Color.GRAY, Color.GREEN, Color.YELLOW, Color.CYAN};
@@ -90,6 +98,11 @@ public class MainActivity extends AppCompatActivity
                     niceMessage();
                 }
 
+//                if (index == 2)
+//                {
+//                    // TODO
+//                }
+
                 if (index == 3)
                 {
                     int aryLength = color.length;
@@ -126,7 +139,8 @@ public class MainActivity extends AppCompatActivity
 
     public void niceMessage()
     {
-        String[] message1 = {"You can do this!", "It's a good day to make changes!", "Don't give up on your goals!", "It's never to late be become a better person!"};
+        String[] message1 = {"You can do this!", "It's a good day to make changes!",
+                "Don't give up on your goals!", "It's never to late be become a better person!"};
         Random random1 = new Random();
         int select1 = random1.nextInt(message1.length);
 

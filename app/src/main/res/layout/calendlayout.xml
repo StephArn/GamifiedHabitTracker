@@ -41,6 +41,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:autofillHints="" />
+
     <EditText
         android:id="@+id/nrZile"
         android:layout_width="wrap_content"
@@ -68,16 +69,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:autofillHints="" />
+
+<!--    <Button-->
+<!--        android:id="@+id/button1"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="200dp"-->
+<!--        android:layout_marginLeft="250dp"-->
+<!--        android:layout_marginTop="500dp"-->
+<!--        android:text="Repeta"-->
+<!--        android:onClick="Validate"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        tools:ignore="OnClick" />-->
+
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="200dp"
         android:layout_marginLeft="250dp"
         android:layout_marginTop="500dp"
-        android:text="Repeta"
-        android:onClick="Validate"
+        android:text="Back"
+        android:onClick="openMenu"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="OnClick" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
