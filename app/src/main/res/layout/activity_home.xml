@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="100dp"
+    tools:context=".HomeActivity">
+
+    <Button
+        android:id="@+id/bttnmodifusername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update Your Username"
+        android:padding="10dp"
+        android:layout_marginTop="100dp"
+        />
+
+    <Button
+        android:id="@+id/bttnmodifpass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update Your Password"
+        android:layout_marginTop="100dp"
+        android:layout_below="@+id/bttnmodifusername"/>
+
+</RelativeLayout>

@@ -1,11 +1,9 @@
-package com.mds;
+package com.example.circlemenu;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -13,33 +11,35 @@ import android.view.View;
 import android.widget.CalendarView;
 import android.widget.EditText;
 
-public class MainActivity extends AppCompatActivity {
+public class calend extends AppCompatActivity
+{
     private CalendarView calendarView;
     private mySQLiteDBHandler dbHandler;
     private EditText editText;
     private String selectedDate;
-    private EditText nrZile;
-    private EditText nrSaptamani;
     private SQLiteDatabase sqLiteDatabase;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.calendlayout);
 
         calendarView=(CalendarView) findViewById(R.id.calendarView);
         editText=findViewById(R.id.editText);
-        nrZile = (EditText) findViewById(R.id.nrZile);
-        nrSaptamani = (EditText) findViewById(R.id.nrSaptamani);
 
-        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener()
+        {
             @Override
-            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth)
+            {
                 selectedDate = Integer.toString(year)+Integer.toString(month)+Integer.toString(dayOfMonth);
                 ReadDatabase(view);
 
             }
         });
-        try {
+        try
+        {
             dbHandler = new mySQLiteDBHandler(this, "Calendar database",null,1);
             sqLiteDatabase = dbHandler.getWritableDatabase();
             sqLiteDatabase.execSQL("Create Table IF NOT EXISTS EventCalendar(Date TEXT,Event TEXT)");
@@ -59,14 +59,16 @@ public class MainActivity extends AppCompatActivity {
                 sqLiteDatabase.insert("EventCalendar",null,contentValues);
                 contentValues.clear();
             }
-
         }
-        catch (Exception e){
+        catch (Exception e)
+        {
             e.printStackTrace();
         }
 
     }
-    public void InsertDatabase(View view){
+
+    public void InsertDatabase(View view)
+    {
         ContentValues contentValues= new ContentValues();
         contentValues.put("Date",selectedDate);
         contentValues.put("Event",editText.getText().toString());
@@ -74,36 +76,20 @@ public class MainActivity extends AppCompatActivity {
         contentValues.clear();
     }
 
-    public void ReadDatabase(View view){
+    public void ReadDatabase(View view)
+    {
+        System.out.println("\nCitim baza de date\n");
         String query = "Select Event from EventCalendar where Date ="+selectedDate+";";
-        try{
+        try
+        {
             @SuppressLint("Recycle") Cursor cursor=sqLiteDatabase.rawQuery(query,null);
             cursor.moveToLast();
             editText.setText(cursor.getString(0));
         }
-        catch (Exception e){
+        catch (Exception e)
+        {
             e.printStackTrace();
             editText.setText("");
         }
     }
-    public void Validate (View view)
-    {
-        int x;
-        x=Integer.parseInt(selectedDate.substring(5));
-        String[] y;
-        ContentValues contentValues= new ContentValues();
-        for(int i=0;i<Integer.parseInt(nrZile.getText().toString());i++)
-        {
-            for(int j=0;j<Integer.parseInt(nrSaptamani.getText().toString());j++)
-            {
-                y=new String[x++];
-                contentValues.put("Date",selectedDate.substring(0,4)+y.toString());
-                contentValues.put("Event",editText.getText().toString());
-                sqLiteDatabase.insert("EventCalendar",null,contentValues);
-                contentValues.clear();
-            }
-            x+=7-Integer.parseInt(nrZile.getText().toString());
-        }
-    }
-
 }

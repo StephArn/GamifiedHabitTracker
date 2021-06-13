@@ -2,8 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.circlemenu">
 
-
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,6 +18,15 @@
         </activity>
 
         <activity android:name=".calend" />
+
+        <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".LoginActivity"
+            android:parentActivityName= ".SignUpActivity"></activity>
+        <activity android:name=".ModifyUsernameActivity"
+            android:parentActivityName= ".HomeActivity"></activity>
+        <activity android:name=".ModifyPasswordActivity"
+            android:parentActivityName= ".HomeActivity"></activity>
+        <activity android:name=".SignUpActivity"></activity>
 
     </application>
 
