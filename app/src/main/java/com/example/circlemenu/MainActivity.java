@@ -101,6 +101,11 @@ public class MainActivity extends AppCompatActivity
 
                     screenView.setBackgroundColor(color[rNum]);
                 }
+
+                if (index == 4)
+                {
+                    openProfile();
+                }
             }
             @Override
             public boolean onButtonLongClick(@NonNull CircleMenuView view, int buttonIndex)
@@ -124,6 +129,12 @@ public class MainActivity extends AppCompatActivity
     public void openCalend()
     {
         Intent intent = new Intent(this, calend.class);
+        startActivity(intent);
+    }
+
+    public void openProfile()
+    {
+        Intent intent = new Intent(this, SignUpActivity.class);
         startActivity(intent);
     }
 }
