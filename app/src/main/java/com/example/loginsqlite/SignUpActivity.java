@@ -15,11 +15,11 @@ public class SignUpActivity extends AppCompatActivity {
     EditText username, password, repassword;
     Button signup, login;
     DBHelper db;
-    public static final String EXTRA_NAME = "com.example.loginsqlite.EXTRA_TEXT";
+    public static final String EXTRA_NAME = "com.example.loginsqlite.EXTRA_NAME";
     public static final String EXTRA_PASS = "com.example.loginsqlite.EXTRA_PASS";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+   protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //refactor - schimbat si denumirea fisierului de layout pt a nu exista conflicte
         setContentView(R.layout.activity_signup);
@@ -29,7 +29,7 @@ public class SignUpActivity extends AppCompatActivity {
         repassword =  (EditText) findViewById(R.id.repassword);
         signup = (Button) findViewById(R.id.bttnsignup);
         login = (Button) findViewById(R.id.bttnlogin);
-        db = new DBHelper(this);
+        db = DBHelper.getInstance(this);
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override

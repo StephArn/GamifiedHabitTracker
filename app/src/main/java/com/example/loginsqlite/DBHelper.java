@@ -10,10 +10,18 @@ import androidx.annotation.Nullable;
 
 public class DBHelper extends SQLiteOpenHelper  {
 
-    public static final String DBNAME = "Login.db";
+    private static final String DBNAME = "Login.db";
+    static private DBHelper instance;
 
-    public DBHelper(Context context) {
+    private DBHelper(Context context) {
         super(context, "Login.db", null, 1);
+    }
+
+    static public DBHelper getInstance(Context context){
+        if(instance == null){
+            instance = new DBHelper(context.getApplicationContext());
+        }
+        return instance;
     }
 
     @Override

@@ -14,7 +14,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText username, password;
     Button bttnlogin;
     DBHelper db;
-    public static final String EXTRA_NAME = "com.example.loginsqlite.EXTRA_TEXT";
+    public static final String EXTRA_NAME = "com.example.loginsqlite.EXTRA_NAME";
     public static final String EXTRA_PASS = "com.example.loginsqlite.EXTRA_PASS";
 
     @Override
@@ -25,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
         username = (EditText) findViewById(R.id.username1);
         password = (EditText) findViewById(R.id.password1);
         bttnlogin = (Button) findViewById(R.id.bttnlogin1);
-        db = new DBHelper(this);
+        db = DBHelper.getInstance(this);
 
         bttnlogin.setOnClickListener(new View.OnClickListener(){
 

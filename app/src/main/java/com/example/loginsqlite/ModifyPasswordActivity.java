@@ -21,7 +21,7 @@ public class ModifyPasswordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_modifpass);
         newPass = (EditText) findViewById(R.id.newpassword);
         bttnmodifpass = (Button) findViewById(R.id.bttnmodifpass);
-        db = new DBHelper(this);
+        db = DBHelper.getInstance(this);
 
         bttnmodifpass.setOnClickListener(new View.OnClickListener() {
             @Override
